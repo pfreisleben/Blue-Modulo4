@@ -1,4 +1,9 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class FilmeService {}
+export class FilmeService {
+
+  getHello() {
+    return 'Olá Mundo!'
+  }
+}
