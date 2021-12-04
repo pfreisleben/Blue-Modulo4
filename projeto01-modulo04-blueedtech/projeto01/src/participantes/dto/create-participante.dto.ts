@@ -1,1 +1,3 @@
-export class CreateParticipanteDto {}
+export class CreateParticipanteDto {
+
+}
