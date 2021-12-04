@@ -8,7 +8,6 @@ export class FilmeController {
 
   @Get()
   getHello(): string {
-    console.log(this.filmeService)
     return this.filmeService.getHello();
   }
 

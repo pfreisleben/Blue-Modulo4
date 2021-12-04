@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Filme {
-  id              Int            @id @default(autoincrement())
+  id              Int            @id @unique @default(autoincrement())
   nome            String
   imagem          String?
   data_lancamento DateTime
@@ -22,7 +22,7 @@ model Filme {
 }
 
 model Genero {
-  id      Int    @id @default(autoincrement())
+  id      Int    @id @unique @default(autoincrement())
   nome    String
   genero  Filme  @relation(fields: [filmeId], references: [id])
   filmeId Int
@@ -30,7 +30,7 @@ model Genero {
 }
 
 model Participante {
-  id              Int      @id @default(autoincrement())
+  id              Int      @id @unique @default(autoincrement())
   nome            String
   imagem          String
   data_nascimento DateTime
