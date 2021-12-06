@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFilmeDto } from './dto/create-filme.dto';
 import { UpdateFilmeDto } from './dto/update-filme.dto';
+import { PrismaClient } from '.prisma/client';
 
 
 @Injectable()
 export class FilmesService {
+
   create(createFilmeDto: CreateFilmeDto) {
     return 'This action adds a new filme';
   }
