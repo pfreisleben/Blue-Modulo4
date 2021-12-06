@@ -6,6 +6,6 @@ import { PrismaClient } from '.prisma/client';
 @Module({
   imports: [],
   controllers: [FilmesController],
-  providers: [FilmesService, PrismaClient]
+  providers: [FilmesService, PrismaClient],
 })
 export class FilmesModule {}
