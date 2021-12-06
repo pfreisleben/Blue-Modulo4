@@ -9,7 +9,7 @@ export class FilmesController {
 
   @Post()
   create(@Body() createFilmeDto: CreateFilmeDto) {
-    return this.filmesService.create(createFilmeDto);
+    return this.filmesService.createPrisma(createFilmeDto);
   }
 
   @Get()
