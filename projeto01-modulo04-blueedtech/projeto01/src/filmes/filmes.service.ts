@@ -6,7 +6,13 @@ import { PrismaClient } from '.prisma/client';
 
 @Injectable()
 export class FilmesService {
+  constructor(private readonly prisma: PrismaClient) {}
 
+  createPrisma(createFilmeDto: CreateFilmeDto) {
+    return this.prisma.filme.create({
+      data: { ...createFilmeDto },
+    })
+  }
   create(createFilmeDto: CreateFilmeDto) {
     return 'This action adds a new filme';
   }

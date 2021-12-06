@@ -10,11 +10,11 @@ export class CreateFilmeDto {
 
   @IsDate()
   @IsNotEmpty()
-  data_lancamento: number
+  data_lancamento: string
 
   @IsNotEmpty()
   @IsNumber()
-  tempo_duracao: number
+  tempo_duracao: string
 
   
 
