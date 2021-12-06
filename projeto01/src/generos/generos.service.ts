@@ -32,6 +32,6 @@ export class GenerosService {
   }
 
   removeOnePrisma(id: number) {
-    return this.prisma.genero.delete({where: {id}})
+    return this.prisma.genero.delete({ where: { id } });
   }
 }
