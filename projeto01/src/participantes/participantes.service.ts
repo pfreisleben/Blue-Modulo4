@@ -7,7 +7,7 @@ import { PrismaClient, Participante } from '.prisma/client';
 export class ParticipantesService {
   constructor(private readonly prisma: PrismaClient) {}
 
-  createPrisma(createParticipanteDto: CreateParticipanteDto) {
+  createOnePrisma(createParticipanteDto: CreateParticipanteDto) {
     return this.prisma.participante.create({
       data: { ...createParticipanteDto },
     });
