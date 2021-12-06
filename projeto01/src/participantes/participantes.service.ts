@@ -15,17 +15,20 @@ export class ParticipantesService {
     });
   }
 
-  findAllPrisma() {
+  findAllPrisma(): Promise<Participante[]> {
     return this.prisma.participante.findMany();
   }
 
-  findOnePrisma(id: number) {
+  findOnePrisma(id: number): Promise<Participante> {
     return this.prisma.participante.findUnique({
       where: { id },
     });
   }
 
-  updateOnePrisma(id: number, updateParticipanteDto: UpdateParticipanteDto) {
+  updateOnePrisma(
+    id: number,
+    updateParticipanteDto: UpdateParticipanteDto,
+  ): Promise<Participante> {
     return this.prisma.participante.update({
       data: { ...updateParticipanteDto },
       where: { id },
