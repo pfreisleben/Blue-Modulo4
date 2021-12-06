@@ -5,23 +5,27 @@ import { PrismaClient, Participante } from '.prisma/client';
 
 @Injectable()
 export class ParticipantesService {
-  create(createParticipanteDto: CreateParticipanteDto) {
-    return 'This action adds a new participante';
+  constructor(private readonly prisma: PrismaClient) {}
+
+  createPrisma(createParticipanteDto: CreateParticipanteDto) {
+    return this.prisma.participante.create({
+      data: { ...createParticipanteDto },
+    });
   }
 
-  findAll() {
+  findAllPrisma() {
     return `This action returns all participantes`;
   }
 
-  findOne(id: number) {
+  findOnePrisma(id: number) {
     return `This action returns a #${id} participante`;
   }
 
-  update(id: number, updateParticipanteDto: UpdateParticipanteDto) {
+  updateOnePrisma(id: number, updateParticipanteDto: UpdateParticipanteDto) {
     return `This action updates a #${id} participante`;
   }
 
-  remove(id: number) {
+  removeOnePrisma(id: number) {
     return `This action removes a #${id} participante`;
   }
 }

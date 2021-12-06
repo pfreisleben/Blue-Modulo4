@@ -17,17 +17,17 @@ export class ParticipantesController {
 
   @Post()
   create(@Body() createParticipanteDto: CreateParticipanteDto) {
-    return this.participantesService.create(createParticipanteDto);
+    return this.participantesService.createOnePrisma(createParticipanteDto);
   }
 
   @Get()
   findAll() {
-    return this.participantesService.findAll();
+    return this.participantesService.findAllPrisma();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.participantesService.findOne(+id);
+    return this.participantesService.findOnePrisma(+id);
   }
 
   @Patch(':id')
@@ -35,11 +35,11 @@ export class ParticipantesController {
     @Param('id') id: string,
     @Body() updateParticipanteDto: UpdateParticipanteDto,
   ) {
-    return this.participantesService.update(+id, updateParticipanteDto);
+    return this.participantesService.updateOnePrisma(+id, updateParticipanteDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.participantesService.remove(+id);
+    return this.participantesService.removeOnePrisma(+id);
   }
 }
