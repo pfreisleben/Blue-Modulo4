@@ -14,7 +14,7 @@ export class FilmesService {
       data: { ...createFilmeDto },
     })  
   }
-  create(createFilmeDto: CreateFilmeDto) {
+  create(createFilmeDto: CreateFilmeDto): string {
     return 'This action adds a new filme';
   }
 
