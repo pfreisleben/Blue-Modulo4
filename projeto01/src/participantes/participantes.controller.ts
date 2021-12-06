@@ -35,7 +35,10 @@ export class ParticipantesController {
     @Param('id') id: string,
     @Body() updateParticipanteDto: UpdateParticipanteDto,
   ) {
-    return this.participantesService.updateOnePrisma(+id, updateParticipanteDto);
+    return this.participantesService.updateOnePrisma(
+      +id,
+      updateParticipanteDto,
+    );
   }
 
   @Delete(':id')

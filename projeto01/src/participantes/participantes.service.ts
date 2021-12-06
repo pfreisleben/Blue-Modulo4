@@ -7,22 +7,29 @@ import { PrismaClient, Participante } from '.prisma/client';
 export class ParticipantesService {
   constructor(private readonly prisma: PrismaClient) {}
 
-  createOnePrisma(createParticipanteDto: CreateParticipanteDto) {
+  createOnePrisma(
+    createParticipanteDto: CreateParticipanteDto,
+  ): Promise<Participante> {
     return this.prisma.participante.create({
       data: { ...createParticipanteDto },
     });
   }
 
   findAllPrisma() {
-    return `This action returns all participantes`;
+    return this.prisma.participante.findMany();
   }
 
   findOnePrisma(id: number) {
-    return `This action returns a #${id} participante`;
+    return this.prisma.participante.findUnique({
+      where: { id },
+    });
   }
 
   updateOnePrisma(id: number, updateParticipanteDto: UpdateParticipanteDto) {
-    return `This action updates a #${id} participante`;
+    return this.prisma.participante.update({
+      data: { ...updateParticipanteDto },
+      where: { id },
+    });
   }
 
   removeOnePrisma(id: number) {
