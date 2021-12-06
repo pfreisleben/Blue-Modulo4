@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateFilmeDto } from './dto/create-filme.dto';
 import { UpdateFilmeDto } from './dto/update-filme.dto';
 import { PrismaClient } from '.prisma/client';
+import { Filme } from '.prisma/client';
 
 
 @Injectable()
