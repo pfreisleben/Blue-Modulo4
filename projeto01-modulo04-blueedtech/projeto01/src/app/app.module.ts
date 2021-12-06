@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { FilmeModule } from 'src/filme/filme.module';
+import { FilmesModule } from 'src/filmes/filmes.module';
+import { ParticipantesModule } from 'src/participantes/participantes.module';
 
 @Module({
-  imports: [FilmeModule],
+  imports: [FilmesModule, ParticipantesModule],
   controllers: [],
   providers: [],
 })
