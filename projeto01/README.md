@@ -1,73 +1,111 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# API - Projeto 2 do Módulo 3 BlueEdTech
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Essa é uma API criada utilizando as aulas do Módulo 4 de Back End em NodeJS da BlueEdTech.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+A idéia é criar um CRUD utilizando o framework NestJS, em um banco de dados relacional postgres.
 
-## Description
+Linguagem Utilizada: JavaScript / TypeScript
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Banco de dados: Postgres
 
-## Installation
+## Collections utilizadas
 
-```bash
-$ npm install
-```
+      Cidades, Estados e Paises.
 
-## Running the app
+## Iniciando o aplicativo
 
-```bash
-# development
-$ npm run start
+    npm start
 
-# watch mode
-$ npm run start:dev
+## URL Base
 
-# production mode
-$ npm run start:prod
-```
+    https://aplicacao-projeto2.herokuapp.com/
 
-## Test
+## Listando os objetos (GET)
 
-```bash
-# unit tests
-$ npm run test
+        /cidades/listall
+        /estados/listall
+        /paises/listall
 
-# e2e tests
-$ npm run test:e2e
+## Os retornos da aplicação estão no formato JSON, exemplo:
 
-# test coverage
-$ npm run test:cov
-```
+### Retorno de /cidades/listall
 
-## Support
+        [{"_id":"618465e0ef7de9287a2d0ea5","nome":"Jundiai","qtdBairros":20,"populacao":5000000,"dtAniversario":"2021-12-11T00:00:00.000Z","__v":0},                    {"_id":"6184701f5616b63843c425f4","nome":"Tatui","qtdBairros":20,"populacao":100000,"dtAniversario":"2021-04-11T03:00:00.000Z","__v":0},  {"_id":"618a619657616b06f618a832","nome":"Teste","qtdBairros":30,"populacao":1000,"dtAniversario":"2021-09-11T03:00:00.000Z","__v":0},{"_id":"618e9c265c9e5900232038a7","nome":"São Paulo","qtdBairros":10,"populacao":10000000,"dtAniversario":"2021-12-11T00:00:00.000Z","__v":0}]
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Listando objeto específico (GET)
 
-## Stay in touch
+### Deverá ser passado um parametro(nome) na rota _/{collection}/listname/{nome}_, exemplo:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+        /cidades/listname/Tatui
+        /estados/listname/São Paulo
+        /paises/listanme/Brasil
 
-## License
+## Adicionando novos objetos (POST)
 
-Nest is [MIT licensed](LICENSE).
+### Para adicionar um novo objeto a alguma collection, deverá ser enviado um JSON com os campos e dados corretos, caso contrário a aplicação retornará uma mensagem de erro.
+
+#### Para adicionar um novo objeto na collection _CIDADES_:
+
+      Rota: /cidades/add
+      Fomato JSON esperado: { "nome": String, "qtdBairros": Number, "populacao": Number, "dtAniversario": Date }
+
+#### Para adicionar um novo objeto na collection _ESTADOS_:
+
+      Rota: /estados/add
+      Fomato JSON esperado: { "nome": String, "regiao": String, "populacao": Number, "vlrSalarioMin": Number }
+
+#### Para adicionar um novo objeto na collection _PAISES_:
+
+      Rota: /estados/add
+      Fomato JSON esperado: { "nome": String, "populacao": Number, "linguaMae": String, "pib": Number }
+
+### Caso exista algum problema com os dados do JSON enviado, a aplicação retornará:
+
+      {"messagem": "Objeto inválido. Algum campo está com valor vazio."}
+
+### Caso o objeto seja adicionado com sucesso, a API retornará o seguinte JSON:
+
+      { "message": "Cadastrado com sucesso" }
+
+## Atualizando um objeto (PUT)
+
+### Para atualizar um objeto de alguma collection, deverá ser informado o ID do objeto na rota, e enviado um JSON com os novos valores através do método PUT.
+
+#### Para atualizar um novo objeto na collection _CIDADES_:
+
+      Rota: /cidades/update/{id}
+      Fomato JSON esperado: { "nome": String, "qtdBairros": Number, "populacao": Number, "dtAniversario": Date }
+
+#### Para adicionar um novo objeto na collection _ESTADOS_:
+
+      Rota: /estados/update/{id}
+      Fomato JSON esperado: { "nome": String, "regiao": String, "populacao": Number, "vlrSalarioMin": Number }
+
+#### Para adicionar um novo objeto na collection _PAISES_:
+
+      Rota: /estados/update/{id}
+      Fomato JSON esperado: { "nome": String, "populacao": Number, "linguaMae": String, "pib": Number }
+
+### Caso o objeto seja atualizado com sucesso, a API retornará o seguinte JSON:
+
+      { "message": "Atualizado com sucesso" }
+
+## Excluindo um objeto (DELETE)
+
+### Para deletar um objeto de alguma collection, deverá ser informado o ID do objeto na rota.
+
+#### Para deletar um objeto na collection _CIDADES_:
+
+      Rota: /cidades/delete/{id}
+
+#### Para deletar um objeto na collection _ESTADOS_:
+
+      Rota: /estados/update/{id}
+
+#### Para deletar um objeto na collection _PAISES_:
+
+      Rota: /estados/update/{id}
+
+### Caso o objeto seja deletado com sucesso, a API retornará o seguinte JSON:
+
+      { "message": "Deletado com sucesso" }
