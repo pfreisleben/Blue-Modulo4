@@ -9,6 +9,8 @@ export class FilmesController {
 
   @Post()
   create(@Body() createFilmeDto: CreateFilmeDto) {
+    createFilmeDto.data_lancamento = new Date(createFilmeDto.data_lancamento).toISOString()
+    createFilmeDto.tempo_duracao = new Date(createFilmeDto.tempo_duracao).toISOString()
     return this.filmesService.createPrisma(createFilmeDto);
   }
 

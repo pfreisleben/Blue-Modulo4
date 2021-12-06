@@ -9,10 +9,10 @@ import { Filme } from '.prisma/client';
 export class FilmesService {
   constructor(private readonly prisma: PrismaClient) {}
 
-  async createPrisma(createFilmeDto: CreateFilmeDto) {
+  async createPrisma(createFilmeDto: CreateFilmeDto): Promise<Filme> {
     return await this.prisma.filme.create({
       data: { ...createFilmeDto },
-    })
+    })  
   }
   create(createFilmeDto: CreateFilmeDto) {
     return 'This action adds a new filme';
