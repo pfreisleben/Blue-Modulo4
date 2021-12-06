@@ -10,11 +10,10 @@ import {
 import { ParticipantesService } from './participantes.service';
 import { CreateParticipanteDto } from './dto/create-participante.dto';
 import { UpdateParticipanteDto } from './dto/update-participante.dto';
-import { PrismaClient, Participante } from '.prisma/client';
 
 @Controller('participantes')
 export class ParticipantesController {
-  constructor(private readonly prisma: PrismaClient) {}
+  constructor(private readonly participantesService: ParticipantesService) {}
 
   @Post()
   create(@Body() createParticipanteDto: CreateParticipanteDto) {

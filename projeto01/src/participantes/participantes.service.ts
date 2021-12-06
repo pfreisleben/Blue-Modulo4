@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateParticipanteDto } from './dto/create-participante.dto';
 import { UpdateParticipanteDto } from './dto/update-participante.dto';
+import { PrismaClient, Participante } from '.prisma/client';
 
 @Injectable()
 export class ParticipantesService {
