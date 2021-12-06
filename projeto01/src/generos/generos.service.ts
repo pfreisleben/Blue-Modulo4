@@ -1,11 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { CreateGeneroDto } from './dto/create-genero.dto';
 import { UpdateGeneroDto } from './dto/update-genero.dto';
+import { PrismaClient, Genero } from '.prisma/client';
 
 @Injectable()
 export class GenerosService {
+  constructor(private readonly prisma: PrismaClient) {}
   create(createGeneroDto: CreateGeneroDto) {
-    return 'This action adds a new genero';
+    return this.prisma.genero.create({
+      data: { ...createGeneroDto },
+    });
   }
 
   findAll() {
