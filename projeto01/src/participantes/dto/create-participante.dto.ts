@@ -2,6 +2,7 @@ import {
   IsNotEmpty,
   IsInt,
   IsString,
+  IsBoolean,
   IsDate,
   IsNumber,
   IsDateString,
@@ -19,9 +20,13 @@ export class CreateParticipanteDto {
   @IsNotEmpty()
   data_nascimento: string;
 
-  @IsString()
+  @IsBoolean()
   @IsNotEmpty()
-  ator: string;
+  ator: boolean;
+
+  @IsBoolean()
+  @IsNotEmpty()
+  staff: boolean;
 
   @IsInt()
   @IsNotEmpty()

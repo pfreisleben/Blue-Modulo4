@@ -17,6 +17,9 @@ export class ParticipantesController {
 
   @Post()
   create(@Body() createParticipanteDto: CreateParticipanteDto) {
+    createParticipanteDto.data_nascimento = new Date(
+      createParticipanteDto.data_nascimento,
+    ).toISOString();
     return this.participantesService.createOnePrisma(createParticipanteDto);
   }
 
