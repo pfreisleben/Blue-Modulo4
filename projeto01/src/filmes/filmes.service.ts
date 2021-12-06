@@ -4,7 +4,6 @@ import { UpdateFilmeDto } from './dto/update-filme.dto';
 import { PrismaClient } from '.prisma/client';
 import { Filme } from '.prisma/client';
 
-
 @Injectable()
 export class FilmesService {
   constructor(private readonly prisma: PrismaClient) {}
@@ -12,30 +11,32 @@ export class FilmesService {
   async createPrisma(createFilmeDto: CreateFilmeDto): Promise<Filme> {
     return await this.prisma.filme.create({
       data: { ...createFilmeDto },
-    })  
+    });
   }
 
   async findAllPrisma(): Promise<Filme[]> {
-    return await  this.prisma.filme.findMany();
+    return await this.prisma.filme.findMany();
   }
 
   async findOnePrisma(id: number): Promise<Filme> {
     return await this.prisma.filme.findUnique({
-      where: {id}
-    })
-
+      where: { id },
+    });
   }
 
-  async updateOnePrisma(id: number, updateFilmeDto: UpdateFilmeDto): Promise<Filme> {
+  async updateOnePrisma(
+    id: number,
+    updateFilmeDto: UpdateFilmeDto,
+  ): Promise<Filme> {
     return await this.prisma.filme.update({
-      data: {... updateFilmeDto},
-      where: {id}
-    })
+      data: { ...updateFilmeDto },
+      where: { id },
+    });
   }
 
   async removeOnePrisma(id: number) {
     return await this.prisma.filme.delete({
-      where: {id}
-    })
+      where: { id },
+    });
   }
 }
