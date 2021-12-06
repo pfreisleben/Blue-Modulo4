@@ -6,25 +6,31 @@ import { PrismaClient, Genero } from '.prisma/client';
 @Injectable()
 export class GenerosService {
   constructor(private readonly prisma: PrismaClient) {}
-  createOnePrisma(createGeneroDto: CreateGeneroDto) {
+
+  createOnePrisma(createGeneroDto: CreateGeneroDto): Promise<Genero> {
     return this.prisma.genero.create({
       data: { ...createGeneroDto },
     });
   }
 
-  findAllPrisma() {
+  findAllPrisma(): Promise<Genero[]> {
     return this.prisma.genero.findMany();
   }
 
-  findOnePrisma(id: number) {
-    return `This action returns a #${id} genero`;
+  findOnePrisma(id: number): Promise<Genero> {
+    return this.prisma.genero.findUnique({ where: { id } });
   }
 
-  updateOnePrisma(id: number, updateGeneroDto: UpdateGeneroDto) {
-    return `This action updates a #${id} genero`;
+  updateOnePrisma(
+    id: number,
+    updateGeneroDto: UpdateGeneroDto,
+  ): Promise<Genero> {
+    return this.prisma.genero.update({
+      data: { ...updateGeneroDto },
+      where: { id },
+    });
   }
 
   removeOnePrisma(id: number) {
-    return `This action removes a #${id} genero`;
-  }
+    return this.prisma.genero.delete({where: {id}})
 }
