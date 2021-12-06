@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFilmeDto } from './dto/create-filme.dto';
 import { UpdateFilmeDto } from './dto/update-filme.dto';
-import { PrismaClient } from '.prisma/client';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { Filme } from '.prisma/client';
 
 @Injectable()
 export class FilmesService {
-  constructor(private readonly prisma: PrismaClient) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async createPrisma(createFilmeDto: CreateFilmeDto): Promise<Filme> {
     return await this.prisma.filme.create({
