@@ -14,23 +14,28 @@ export class FilmesService {
       data: { ...createFilmeDto },
     })  
   }
-  create(createFilmeDto: CreateFilmeDto): string {
-    return 'This action adds a new filme';
+
+  async findAllPrisma(): Promise<Filme[]> {
+    return await  this.prisma.filme.findMany();
   }
 
-  findAll() {
-    return `This action returns all filmes`;
+  async findOnePrisma(id: number): Promise<Filme> {
+    return await this.prisma.filme.findUnique({
+      where: {id}
+    })
+
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} filme`;
+  async updateOnePrisma(id: number, updateFilmeDto: UpdateFilmeDto): Promise<Filme> {
+    return await this.prisma.filme.update({
+      data: {... updateFilmeDto},
+      where: {id}
+    })
   }
 
-  update(id: number, updateFilmeDto: UpdateFilmeDto) {
-    return `This action updates a #${id} filme`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} filme`;
+  async removeOnePrisma(id: number) {
+    return await this.prisma.filme.delete({
+      where: {id}
+    })
   }
 }
