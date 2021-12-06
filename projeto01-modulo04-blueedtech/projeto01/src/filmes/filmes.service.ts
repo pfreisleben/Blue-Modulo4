@@ -9,8 +9,8 @@ import { Filme } from '.prisma/client';
 export class FilmesService {
   constructor(private readonly prisma: PrismaClient) {}
 
-  createPrisma(createFilmeDto: CreateFilmeDto) {
-    return this.prisma.filme.create({
+  async createPrisma(createFilmeDto: CreateFilmeDto) {
+    return await this.prisma.filme.create({
       data: { ...createFilmeDto },
     })
   }
