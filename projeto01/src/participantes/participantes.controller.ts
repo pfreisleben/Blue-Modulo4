@@ -1,11 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ParticipantesService } from './participantes.service';
 import { CreateParticipanteDto } from './dto/create-participante.dto';
 import { UpdateParticipanteDto } from './dto/update-participante.dto';
+import { PrismaClient, Participante } from '.prisma/client';
 
 @Controller('participantes')
 export class ParticipantesController {
-  constructor(private readonly participantesService: ParticipantesService) {}
+  constructor(private readonly prisma: PrismaClient) {}
 
   @Post()
   create(@Body() createParticipanteDto: CreateParticipanteDto) {
@@ -23,7 +32,10 @@ export class ParticipantesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateParticipanteDto: UpdateParticipanteDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateParticipanteDto: UpdateParticipanteDto,
+  ) {
     return this.participantesService.update(+id, updateParticipanteDto);
   }
 
