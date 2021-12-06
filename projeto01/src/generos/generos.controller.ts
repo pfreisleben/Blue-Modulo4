@@ -17,26 +17,26 @@ export class GenerosController {
 
   @Post()
   create(@Body() createGeneroDto: CreateGeneroDto) {
-    return this.generosService.create(createGeneroDto);
+    return this.generosService.createOnePrisma(createGeneroDto);
   }
 
   @Get()
   findAll() {
-    return this.generosService.findAll();
+    return this.generosService.findAllPrisma();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.generosService.findOne(+id);
+    return this.generosService.findOnePrisma(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateGeneroDto: UpdateGeneroDto) {
-    return this.generosService.update(+id, updateGeneroDto);
+    return this.generosService.updateOnePrisma(+id, updateGeneroDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.generosService.remove(+id);
+    return this.generosService.removeOnePrisma(+id);
   }
 }
