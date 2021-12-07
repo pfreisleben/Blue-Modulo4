@@ -1,4 +1,4 @@
-# API - Projeto 2 do Módulo 3 BlueEdTech
+# API - Projeto 1 do Módulo 4 BlueEdTech
 
 Essa é uma API criada utilizando as aulas do Módulo 4 de Back End em NodeJS da BlueEdTech.
 
