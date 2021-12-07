@@ -8,104 +8,105 @@ Linguagem Utilizada: JavaScript / TypeScript
 
 Banco de dados: Postgres
 
-## Collections utilizadas
+## Tabelas utilizadas
 
-      Cidades, Estados e Paises.
+      O projeto possui três tabelas: Filmes, Generos e Participantes.
+      O banco foi modelado seguindo a imagem abaixo:
 
 ## Iniciando o aplicativo
 
-    npm start
+    Em modo de desenvolvimento:
+    npm run start:dev
+    Em ambiente de produção:
+    npm run start
 
 ## URL Base
 
-    https://aplicacao-projeto2.herokuapp.com/
+    https://localhost:3000
 
-## Listando os objetos (GET)
+## Listando todos os registros na tabela (GET)
 
-        /cidades/listall
-        /estados/listall
-        /paises/listall
+        {urlBase}/filmes
+        {urlBase}/generos
+        {urlBase}/participantes
 
 ## Os retornos da aplicação estão no formato JSON, exemplo:
 
-### Retorno de /cidades/listall
+### Retorno de {urlBase}/filmes
 
-        [{"_id":"618465e0ef7de9287a2d0ea5","nome":"Jundiai","qtdBairros":20,"populacao":5000000,"dtAniversario":"2021-12-11T00:00:00.000Z","__v":0},                    {"_id":"6184701f5616b63843c425f4","nome":"Tatui","qtdBairros":20,"populacao":100000,"dtAniversario":"2021-04-11T03:00:00.000Z","__v":0},  {"_id":"618a619657616b06f618a832","nome":"Teste","qtdBairros":30,"populacao":1000,"dtAniversario":"2021-09-11T03:00:00.000Z","__v":0},{"_id":"618e9c265c9e5900232038a7","nome":"São Paulo","qtdBairros":10,"populacao":10000000,"dtAniversario":"2021-12-11T00:00:00.000Z","__v":0}]
+        [{"id": 3,"nome": "teste","imagem": "teste","data_lancamento": "1970-01-01T00:00:00.000Z",
+        "tempo_duracao": "1970-01-01T00:00:00.000Z"},{"id": 4,"nome": "Teste","imagem": "Teste",
+        "data_lancamento": "2020-07-10T18:00:00.000Z","tempo_duracao": "2020-07-10T18:00:00.000Z"}]
 
 ## Listando objeto específico (GET)
 
-### Deverá ser passado um parametro(nome) na rota _/{collection}/listname/{nome}_, exemplo:
+### Deverá ser passado um parametro(nome) na rota _/{urlBase}/{tabela}/{id}_, exemplo:
 
-        /cidades/listname/Tatui
-        /estados/listname/São Paulo
-        /paises/listanme/Brasil
+        {urlBase}/filmes/1
+        {urlBase}/generos/2
+        {urlBase}/participantes/3
+        Será retornado um objeto no formato JSON com os dados do banco.
 
 ## Adicionando novos objetos (POST)
 
-### Para adicionar um novo objeto a alguma collection, deverá ser enviado um JSON com os campos e dados corretos, caso contrário a aplicação retornará uma mensagem de erro.
+### Para adicionar um novo objeto a alguma tabela do banco, deverá ser enviado um JSON para a rota correta, tendo os dados corretos, caso contrário a API retornará um erro. Campos abaixo marcados com "?" são opcionais.
 
-#### Para adicionar um novo objeto na collection _CIDADES_:
+#### Para adicionar um novo objeto na tabela **FILMES**:
 
-      Rota: /cidades/add
-      Fomato JSON esperado: { "nome": String, "qtdBairros": Number, "populacao": Number, "dtAniversario": Date }
+      Rota: /filmes/
+      Fomato JSON esperado: { "nome": String, "imagem": String?, "data_lancamento": string, "tempo_duracao": String }
 
-#### Para adicionar um novo objeto na collection _ESTADOS_:
+#### Para adicionar um novo objeto na tabela **GENEROS**:
 
-      Rota: /estados/add
-      Fomato JSON esperado: { "nome": String, "regiao": String, "populacao": Number, "vlrSalarioMin": Number }
+      Rota: /generos/
+      Fomato JSON esperado: { "nome": String, "filmeId": Number }
 
-#### Para adicionar um novo objeto na collection _PAISES_:
+#### Para adicionar um novo objeto na tabela **PARTICIPANTES**:
 
-      Rota: /estados/add
-      Fomato JSON esperado: { "nome": String, "populacao": Number, "linguaMae": String, "pib": Number }
+      Rota: /participantes/
+      Fomato JSON esperado: { "nome": String, "imagem": String,
+      "data_nascimento": String, "ator": Boolean, "staff": Boolean, "filmeId": Number }
 
-### Caso exista algum problema com os dados do JSON enviado, a aplicação retornará:
+### Caso exista algum problema com os dados do JSON enviado, a aplicação retornará um erro com detalhes.
 
-      {"messagem": "Objeto inválido. Algum campo está com valor vazio."}
+### Caso o objeto seja adicionado com sucesso, a API retornará um JSON igual ao objeto adicionaod no banco.
 
-### Caso o objeto seja adicionado com sucesso, a API retornará o seguinte JSON:
+## Atualizando um objeto (PATCH)
 
-      { "message": "Cadastrado com sucesso" }
+### Para atualizar uma linha de alguma tabela, deverá ser informado o ID do objeto na rota, e enviado um JSON com os novos valores através do método PATCH.
 
-## Atualizando um objeto (PUT)
+#### Para atualizar um novo objeto na tabela **FILMES**:
 
-### Para atualizar um objeto de alguma collection, deverá ser informado o ID do objeto na rota, e enviado um JSON com os novos valores através do método PUT.
+      Rota: /filmes/{id}
+      Fomato JSON esperado: { "nome": String, "imagem": String?, "data_lancamento": string, "tempo_duracao": String }
 
-#### Para atualizar um novo objeto na collection _CIDADES_:
+#### Para adicionar um novo objeto na tabela **GENEROS**:
 
-      Rota: /cidades/update/{id}
-      Fomato JSON esperado: { "nome": String, "qtdBairros": Number, "populacao": Number, "dtAniversario": Date }
+      Rota: /generos/{id}
+      Fomato JSON esperado: { "nome": String, "filmeId": Number }
 
-#### Para adicionar um novo objeto na collection _ESTADOS_:
+#### Para adicionar um novo objeto na tabela **PARTICIPANTES**:
 
-      Rota: /estados/update/{id}
-      Fomato JSON esperado: { "nome": String, "regiao": String, "populacao": Number, "vlrSalarioMin": Number }
+      Rota: /participantes/{id}
+      Fomato JSON esperado: { "nome": String, "imagem": String,
+      "data_nascimento": String, "ator": Boolean, "staff": Boolean, "filmeId": Number }
 
-#### Para adicionar um novo objeto na collection _PAISES_:
-
-      Rota: /estados/update/{id}
-      Fomato JSON esperado: { "nome": String, "populacao": Number, "linguaMae": String, "pib": Number }
-
-### Caso o objeto seja atualizado com sucesso, a API retornará o seguinte JSON:
-
-      { "message": "Atualizado com sucesso" }
+### Caso o objeto seja atualizado com sucesso, a API retornará um JSON igual ao objeto atualizado no banco.
 
 ## Excluindo um objeto (DELETE)
 
-### Para deletar um objeto de alguma collection, deverá ser informado o ID do objeto na rota.
+### Para deletar um objeto de alguma tabela, deverá ser informado o ID do objeto na rota.
 
-#### Para deletar um objeto na collection _CIDADES_:
+#### Para deletar um objeto na tabela **FILMES**:
 
-      Rota: /cidades/delete/{id}
+      Rota: /filmes/{id}
 
-#### Para deletar um objeto na collection _ESTADOS_:
+#### Para deletar um objeto na tabela **GENEROS**:
 
-      Rota: /estados/update/{id}
+      Rota: /generos/{id}
 
-#### Para deletar um objeto na collection _PAISES_:
+#### Para deletar um objeto na tabela **PARTICIPANTES**:
 
-      Rota: /estados/update/{id}
+      Rota: /participantes/{id}
 
-### Caso o objeto seja deletado com sucesso, a API retornará o seguinte JSON:
-
-      { "message": "Deletado com sucesso" }
+### Caso o objeto seja deletado com sucesso, a API retornará um JSON igual ao objeto deletado.
