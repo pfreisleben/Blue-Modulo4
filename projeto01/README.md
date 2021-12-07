@@ -12,8 +12,8 @@ Banco de dados: Postgres
 
       O projeto possui três tabelas: Filmes, Generos e Participantes.
       O banco foi modelado seguindo a imagem abaixo:
-   ![image](https://user-images.githubusercontent.com/55242537/144943617-1ae0338d-6102-4124-9322-d7ade6fccee6.png)
 
+![image](https://user-images.githubusercontent.com/55242537/144943617-1ae0338d-6102-4124-9322-d7ade6fccee6.png)
 
 ## Iniciando o aplicativo
 
@@ -71,7 +71,7 @@ Banco de dados: Postgres
 
 ### Caso exista algum problema com os dados do JSON enviado, a aplicação retornará um erro com detalhes.
 
-### Caso o objeto seja adicionado com sucesso, a API retornará um JSON igual ao objeto adicionaod no banco.
+### Caso o objeto seja adicionado com sucesso, a API retornará um JSON igual ao objeto adicionado ao banco.
 
 ## Atualizando um objeto (PATCH)
 
