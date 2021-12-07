@@ -12,7 +12,7 @@ Banco de dados: Postgres
 
       O projeto possui três tabelas: Filmes, Generos e Participantes.
       O banco foi modelado seguindo a imagem abaixo:
-      ![image](https://user-images.githubusercontent.com/55242537/144943617-1ae0338d-6102-4124-9322-d7ade6fccee6.png)
+   ![image](https://user-images.githubusercontent.com/55242537/144943617-1ae0338d-6102-4124-9322-d7ade6fccee6.png)
 
 
 ## Iniciando o aplicativo
